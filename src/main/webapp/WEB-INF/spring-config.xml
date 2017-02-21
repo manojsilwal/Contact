@@ -41,8 +41,13 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="hibernateProperties" ref="hibernateProperties" />
 		<!-- OR mapping files. -->
+<<<<<<< HEAD
 		<property name="packagesToScan" value="edu.contact.domain"/>
 	</bean>
+=======
+		<property name="packagesToScan" value="edu.contact.user.domain"/>
+	</bean>	
+>>>>>>> 7a6e7b62313eed9a3a4ca0a67056efbb4acef98e
 	
 	<context:component-scan base-package="edu.contact" />
 	<!-- JTA bean creation 	 -->

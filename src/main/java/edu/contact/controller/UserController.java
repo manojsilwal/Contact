@@ -3,6 +3,7 @@ package edu.contact.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -74,7 +75,17 @@ public class UserController {
 			
 		} catch (Exception e) {
 			System.err.println("Error in lising users: " + e.getMessage());
-
 		}
+	}
+
+	@RequestMapping("/addUser")
+	public String formUser(Model model){
+		return("userForm");
+	}
+	@RequestMapping(value="/addUser", method=RequestMethod.POST)
+	public String addUser(Model model, User user){
+		userService.save(user);
+		model.addAttribute("user", user);
+		return "redirect:/details";
 	}
 }

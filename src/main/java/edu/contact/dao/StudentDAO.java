@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.contact.domain.Student;
+import edu.contact.user.domain.Student;
 
 @Repository
 public class StudentDAO {

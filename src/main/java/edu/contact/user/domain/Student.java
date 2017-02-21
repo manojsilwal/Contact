@@ -1,4 +1,4 @@
-package edu.contact.domain;
+package edu.contact.user.domain;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.contact.dao.StudentDAO;
-import edu.contact.domain.Student;
+import edu.contact.user.domain.Student;
 
 @Service
 public class StudentService {
