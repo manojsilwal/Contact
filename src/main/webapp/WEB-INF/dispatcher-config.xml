@@ -9,13 +9,26 @@
 	<mvc:annotation-driven />
 	<context:component-scan base-package="edu.contact" />
 	<mvc:resources mapping="/resources/**" location="/resources/" />
-
-	<bean
+	
+	
+<!-- 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
+	</bean> -->
+	
+	<!-- for tiles -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"/>
+	
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles.xml</value>
+			</list>
+		</property>
 	</bean>
-
+	
 
 	<mvc:interceptors>
 		<!-- Changes the locale when a 'lang' request parameter is sent; e.g. /?lang=tr -->
