@@ -19,9 +19,7 @@ public class StudentService {
 
 	@Transactional
 	public Student getStudent(long studentid) {
-		//Transaction tx = sf.getCurrentSession().beginTransaction();
 		Student student = studentdao.load(studentid);
-		//tx.commit();
 		return student;
 	}
 }

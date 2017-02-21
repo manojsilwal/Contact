@@ -44,10 +44,6 @@
 		<property name="packagesToScan" value="edu.contact.domain"/>
 	</bean>
 	
-	<bean id="studentDAO" class="edu.contact.dao.StudentDAO">
-	</bean>
-	
-	
 	<context:component-scan base-package="edu.contact" />
 	<!-- JTA bean creation 	 -->
 	<tx:annotation-driven transaction-manager="txManager" />
