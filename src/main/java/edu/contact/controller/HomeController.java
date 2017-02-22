@@ -15,6 +15,6 @@ public class HomeController {
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String homePage(){
 		System.out.println(studentService.getStudent(1));
-		return "dashboard";
+		return "register";
 	}
 }
