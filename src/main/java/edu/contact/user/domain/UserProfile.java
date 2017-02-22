@@ -15,12 +15,14 @@ public class UserProfile {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
+	
 	private String email;
 	private String firstName;
 	private String lastName;
 	private Gender  gender;
 	private Date dob;
 	private Long phone;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "location_id")
 	private Location location;

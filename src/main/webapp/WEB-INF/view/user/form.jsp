@@ -92,7 +92,7 @@
        </div>
        	<div class="modal-footer">
        		<div class="col-md-4">
-       			 <button type="submit" class="btn btn-danger pull-left"  onClick="userAdd();return false;">Add</button>
+       			 <button type="submit" class="btn btn-danger pull-left" id="submitUser" onClick="userAdd();return false;">Add</button>
 	         
 	         	<button type="submit" class="btn btn-info pull-left" data-dismiss="modal">Cancel</button>
        		</div>
