@@ -14,9 +14,12 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	
 	@OneToOne
 	private UserProfile profile;
+	
 	Role role=Role.USER;
+	
 	@OneToMany(mappedBy = "user")
 	List<Post> posts;
 	
