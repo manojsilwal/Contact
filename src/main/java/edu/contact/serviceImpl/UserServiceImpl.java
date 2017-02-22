@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.contact.dao.UserDAO;
-import edu.contact.domain.User;
 import edu.contact.service.UserService;
+import edu.contact.user.domain.User;
 
 
 @Service
@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService{
 
 	@Transactional
 	public User getUser(long userId) {
-		User user = userDAO.load(userId);
+		User user = userDAO.getById(userId);
 		return user;
 	}
 

@@ -1,13 +1,18 @@
 package edu.contact.user.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Location {
-	@Id
+	@Id @GeneratedValue
 	private Long id;
 	private String Street;
+	private String State;
+	private String contry;
+	private int zipCode;
+	
 	public String getStreet() {
 		return Street;
 	}
@@ -32,8 +37,6 @@ public class Location {
 	public void setZipCode(int zipCode) {
 		this.zipCode = zipCode;
 	}
-	private String State;
-	private String contry;
-	private int zipCode;
+	
 	
 }

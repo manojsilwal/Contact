@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.contact.domain.User;
 import edu.contact.service.UserService;
+import edu.contact.user.domain.User;
 
 @RestController
 public class UserController {

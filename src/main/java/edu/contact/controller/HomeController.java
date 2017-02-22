@@ -18,12 +18,7 @@ public class HomeController {
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String homePage(){
-<<<<<<< HEAD
-		return "index";
-=======
-		System.out.println(studentService.getStudent(1));
 		return "dashboard";
->>>>>>> 7a6e7b62313eed9a3a4ca0a67056efbb4acef98e
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
