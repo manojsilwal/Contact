@@ -5,9 +5,9 @@
 
 <tiles-definitions>
 
- 	<definition name="DefaultTemplate" template="/WEB-INF/view/index.jsp">
+ 	<definition name="DefaultTemplate" template="/WEB-INF/view/general/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/view/general/header.jsp"></put-attribute>
- 	 	<put-attribute name="navBar" value="/WEB-INF/view/general/nav.jsp"></put-attribute>
+ 	 	<put-attribute name="nav" value="/WEB-INF/view/general/nav.jsp"></put-attribute>
  	 	<put-attribute name="content" value=""></put-attribute>
  		<put-attribute name="footer" value="/WEB-INF/view/general/footer.jsp"></put-attribute> 	
 	 	<put-list-attribute name="javascripts">

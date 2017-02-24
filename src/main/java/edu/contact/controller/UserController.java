@@ -19,7 +19,7 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping(value="/users",method=RequestMethod.GET,headers = "Accept=application/json")
+	@RequestMapping(value="/users",method=RequestMethod.GET, headers = "Accept=application/json")
 	public List<User> getUsers(){
 		try {
 
@@ -49,7 +49,9 @@ public class UserController {
 	@RequestMapping(value="/user",method=RequestMethod.POST,headers = "Accept=application/json")
 	public void add(@RequestBody User user){
 		try {
-			userService.save(user);;
+
+			System.out.println("inside user POST");
+			userService.save(user);
 			
 		} catch (Exception e) {
 			System.err.println("Error in lising users: " + e.getMessage());

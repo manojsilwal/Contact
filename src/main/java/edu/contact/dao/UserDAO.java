@@ -16,8 +16,6 @@ import edu.contact.user.domain.User;
 public class UserDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
-
-
 	@Transactional
 	public User load(long userId) {
 		return (User) sessionFactory.getCurrentSession().get(User.class, userId);

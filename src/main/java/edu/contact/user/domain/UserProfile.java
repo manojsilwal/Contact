@@ -15,18 +15,22 @@ public class UserProfile {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
-	
 	private String email;
 	private String firstName;
 	private String lastName;
 	private Gender  gender;
-	private Date dob;
+	private String dob;
 	private Long phone;
-	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "location_id")
 	private Location location;
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -51,10 +55,10 @@ public class UserProfile {
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
-	public Date getDob() {
+	public String getDob() {
 		return dob;
 	}
-	public void setDob(Date dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 	public Long getPhone() {

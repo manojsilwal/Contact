@@ -7,12 +7,18 @@ import javax.persistence.Id;
 @Entity
 public class Location {
 	@Id @GeneratedValue
-	private Long id;
+	private Long id;	
 	private String Street;
 	private String State;
 	private String contry;
 	private int zipCode;
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getStreet() {
 		return Street;
 	}
