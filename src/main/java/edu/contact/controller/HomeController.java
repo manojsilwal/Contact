@@ -18,7 +18,7 @@ public class HomeController {
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String homePage(){
-		return "dashboard";
+		return "register";
 	}
 	@RequestMapping(value="/addUser", method=RequestMethod.GET)
 	public String addUser(){

@@ -29,5 +29,10 @@
 	 		<add-attribute value="/resources/dashboard/js/contact.js" />
 	 	</put-list-attribute>	 	
  	</definition>
-
+	<definition name="register" extends="DefaultTemplate">
+		<put-attribute name="content" value="/WEB-INF/view/user/form.jsp"></put-attribute>
+		<put-list-attribute name="javascripts" inherit="true">
+	 		<add-attribute value="/resources/register/js/contact.js" />
+	 	</put-list-attribute>
+	</definition>
 </tiles-definitions>

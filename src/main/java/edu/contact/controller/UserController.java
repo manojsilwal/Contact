@@ -50,11 +50,7 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping(value="/user",method=RequestMethod.POST)
-	public @ResponseBody User add(@Valid @RequestBody User user){
-			userService.save(user);
-			return user;
-	}
+	
 	
 	@RequestMapping(value="/user",method=RequestMethod.PUT,headers = "Accept=application/json")
 	public void put(@RequestBody User user){
@@ -77,5 +73,18 @@ public class UserController {
 		}
 	}
 
-
+	
+	@RequestMapping(value="/user",method=RequestMethod.POST)
+	public @ResponseBody User add(@Valid @RequestBody User user,Model model){
+		userService.save(user);
+		model.addAttribute("user", user);
+		return user;
+	}
+	
+	@RequestMapping(value="/addUser", method=RequestMethod.POST)
+	public String addUser(@RequestBody User user,Model model){
+		userService.save(user);
+		model.addAttribute("user", user);
+		return "redirect:/details";
+	}
 }
