@@ -1,27 +1,41 @@
 package edu.contact.user.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.Valid;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class User {
+public class User implements Serializable {
+    private static final long serialVersionUID = 5658716793957904104L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
 	private UserProfile profile;
 	
 	Role role=Role.USER;
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
 	List<Post> posts;
+	
+	public List<Post> getPosts() {
+		return posts;
+	}
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
 	
 	public UserProfile getProfile() {
 		return profile;
@@ -35,10 +49,12 @@ public class User {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	public List<Post> getPosts() {
-		return posts;
+	
+	@Override
+	public String toString() {
+		return "User [profile=" + profile + ", role=" + role + ", posts=" + posts + "]";
 	}
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
-	}
+	
+	
+	
 }

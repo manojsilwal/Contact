@@ -20,6 +20,15 @@ public class HomeController {
 	public String homePage(){
 		return "dashboard";
 	}
+	@RequestMapping(value="/addUser", method=RequestMethod.GET)
+	public String addUser(){
+		return "userForm";
+	}
+	
+	@RequestMapping(value="/book", method=RequestMethod.GET)
+	public String addForm(){
+		return "BookList";
+	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(
@@ -39,4 +48,5 @@ public class HomeController {
 		return model;
 
 	}
+	
 }

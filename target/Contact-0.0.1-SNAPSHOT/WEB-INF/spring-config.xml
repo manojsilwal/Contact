@@ -41,12 +41,9 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="hibernateProperties" ref="hibernateProperties" />
 		<!-- OR mapping files. -->
-		<property name="packagesToScan" value="edu.contact.domain"/>
-	</bean>
-	
-	<bean id="studentDAO" class="edu.contact.dao.StudentDAO">
-	</bean>
-	
+
+		<property name="packagesToScan" value="edu.contact.user.domain"/>
+	</bean>	
 	
 	<context:component-scan base-package="edu.contact" />
 	<!-- JTA bean creation 	 -->

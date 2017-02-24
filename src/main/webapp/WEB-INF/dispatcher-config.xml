@@ -11,11 +11,11 @@
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
 	
-<!-- 	<bean
+	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
-	</bean> -->
+	</bean>
 	
 	<!-- for tiles -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"/>
@@ -44,11 +44,6 @@
 		<property name="cookieName" value="localizationCookie" />
 		<property name="cookieMaxAge" value="3600" />
 	</bean>
+	
 
-	<bean id="messageSource"
-		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="basename" value="WEB-INF/welcome" />
-		<property name="defaultEncoding" value="UTF-8" />
-		<property name="cacheSeconds" value="3600" />
-	</bean>
 </beans>

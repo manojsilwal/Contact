@@ -1,5 +1,6 @@
 package edu.contact.user.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -9,14 +10,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-
+import org.hibernate.validator.constraints.NotEmpty;
 @Entity
-public class UserProfile {
+public class UserProfile implements Serializable {
+    private static final long serialVersionUID = 5658716793957904104L;
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
 	
 	private String email;
+	@NotEmpty
 	private String firstName;
 	private String lastName;
 	private Gender  gender;
@@ -68,6 +71,11 @@ public class UserProfile {
 	}
 	public void setLocation(Location location) {
 		this.location = location;
+	}
+	@Override
+	public String toString() {
+		return "UserProfile [email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", gender="
+				+ gender + ", dob=" + dob + ", phone=" + phone + ", location=" + location + "]";
 	}
 	
 	
