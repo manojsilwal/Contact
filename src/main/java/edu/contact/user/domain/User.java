@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,9 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 import edu.contact.post.domain.Post;
 
@@ -28,16 +30,26 @@ public class User implements Serializable {
 	private UserProfile profile;
 	Role role=Role.USER;
 	
+	@OneToMany(mappedBy = "user")
+	@Column(name="post")
+	List<Post> posts;
+	
+	@Transient
+	private MultipartFile image;
+	
+	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	@OneToMany(mappedBy = "creator")
-	List<Post> posts;
-	
+	public MultipartFile getImage() {
+		return image;
+	}
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
 	public List<Post> getPosts() {
 		return posts;
 	}
@@ -56,8 +68,7 @@ public class User implements Serializable {
 	}
 	public void setRole(Role role) {
 		this.role = role;
-	}
-	
+	}	
 	@Override
 	public String toString() {
 		return "User [profile=" + profile + ", role=" + role + ", posts=" + posts + "]";

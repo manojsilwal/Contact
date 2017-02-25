@@ -61,13 +61,13 @@
 			  <div class="col-md-4">
 				<div class="radio">
 				    <label for="radios-0">
-				      <input name="profile.gender" id="radios-0" value="0" checked="checked" type="radio">
+				      <input name="gender" id="radios-0" value="0" checked="checked" type="radio">
 				      Male
 				    </label>
 				</div>
 				<div class="radio">
 				    <label for="radios-1">
-				      <input name="profile.gender" id="radios-1" value="1" type="radio">
+				      <input name="gender" id="radios-1" value="1" type="radio">
 				      Female
 				    </label>
 				</div>
@@ -79,27 +79,27 @@
 			
 			  <label class="col-md-4 control-label" for="textinput">Street</label>  
 			  <div class="col-md-4">
-			  	<input id="addressUpdate" name="street" placeholder="placeholder" class="form-control input-md" type="text" > 
+			  	<input id="street" name="street" placeholder="placeholder" class="form-control input-md" type="text" > 
 			  </div>
 			  
 			  <label class="col-md-4 control-label" for="textinput">City</label>  
 			  <div class="col-md-4">
-			  	<input id="cityUpdate" name="city" placeholder="placeholder" class="form-control input-md" type="text" >
+			  	<input id="city" name="city" placeholder="placeholder" class="form-control input-md" type="text" >
 			  </div>
 			  
 			  <label class="col-md-4 control-label" for="textinput">State</label>  
 			  <div class="col-md-4">
-			  	<input id="stateUpdate" name="state" placeholder="placeholder" class="form-control input-md" type="text" >
+			  	<input id="state" name="state" placeholder="placeholder" class="form-control input-md" type="text" >
 			  </div>
 			  
 			  <label class="col-md-4 control-label" for="textinput">Country</label>  
 			  <div class="col-md-4">
-			  	<input id="countryUpdate" name="country" placeholder="placeholder" class="form-control input-md" type="text" >
+			  	<input id="country" name="country" placeholder="placeholder" class="form-control input-md" type="text" >
 			  </div>
 			  
 			  <label class="col-md-4 control-label" for="textinput">Zip Code</label>  
 			  <div class="col-md-4">
-			  	<input id="postalCodeUpdate" name="zipCode" placeholder="placeholder" class="form-control input-md" type="text" >
+			  	<input id="zipCode" name="zipCode" placeholder="placeholder" class="form-control input-md" type="text" >
 			  </div>
 			  
 			</div>

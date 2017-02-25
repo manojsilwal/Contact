@@ -1,12 +1,12 @@
 function userFormSubmit(){
-   	var dataToSend = JSON.stringify(createObject());
+   	var dataToSend = createObject();
    //	console.log(dataToSend);
    	 $.ajax({
 		type: 'POST',
-		url: contextRoot + '/user',
-		dataType: "json",           // Accept header
+		url: 'user',
+		dataType: false,           // Accept header
  		data:dataToSend,
- 		contentType: 'application/json',   // Sends - Content-type
+ 		contentType: false,   // Sends - Content-type
 		success: function(data){
 			
 			$('#errors').html("");
@@ -41,11 +41,6 @@ function userFormSubmit(){
 }
 
 
-
-			
- 
-  
-
 // Translate form to array
 // Then put in JSON format
  function createObject (){
@@ -53,19 +48,34 @@ function userFormSubmit(){
 	 var firstName = document.getElementById('firstName').value;
 	 var lastName = document.getElementById('lastName').value;
 	 var email = document.getElementById('email').value;
+	 var gender =  $("input[type='radio'][name='gender']:checked").val;
+	 var street = document.getElementById('street').value;
+	 var city = document.getElementById('city').value;
+	 var city = document.getElementById('state').value;
+	 var city = document.getElementById('country').value;
+	 var city = document.getElementById('zipCode').value;
 	 var phone = document.getElementById('phone').value;
+	 //var file = document.getElementById('file').value;
 	 
-	 console.log(firstName);
+	 console.log(file);
 	 
     var jsonObject = {
     		"profile" : {
 				"email":email,
 				"firstName":firstName,
 				"lastName":lastName,
-				"gender":null,
+				"gender":gender,
+				"location":{
+					"street":street,
+					"city":city,
+					"state": state,
+					"country": country,
+					"zipCode":zipCode
+				},
 				"dob":null,
 				"phone":phone
     		},
+    		"image":null,
     		"post" : null
     };
     

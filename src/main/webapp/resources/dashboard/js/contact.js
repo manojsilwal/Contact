@@ -1,25 +1,36 @@
-
 function postSubmit(id){
-   	var dataToSend = JSON.stringify(serializeObject($('#postForm')));
+   	var dataToSend = createObject();
+   //	console.log(dataToSend);
    	 $.ajax({
 		type: 'POST',
-		url:'/Contact/post/'+id,
-		dataType: "json",           // Accept header
+		url: 'post/'+id,
+		dataType: false,           // Accept header
  		data:dataToSend,
- 		contentType: 'application/json',   // Sends - Content-type
-		success: function(){
-			location.reload(true); 
+ 		contentType: false,   // Sends - Content-type
+		success: function(data){
+			
+			$('#errors').html("");
+ 			$("#result").append( '<H3 align="center"> OKAY!! <H3>');                
+	 	    $('#result').show();
 		},
  
 		error: function(errorObject ){	
-			if (errorObject.responseJSON.errorType == "validationError") {
-	 			$('#result').html("");
-	 			$('#result').html("");
+//			error: function(jqXHR,  textStatus,  HTTPStatus ){	
+// jqXHR = jQuery XMLHttpRequest superset of  XMLHttpRequest
+//	EXAMPLE values:		error: function(jQuery XMLHttpRequest,  "error",  "Bad Request" ){	
+// 	see http://api.jquery.com/jquery.ajax/
+			console.log(errorObject);
+			if (errorObject.responseJSON.errorType == "ValidationError") {
+	 			$('#success').html("");
+	 			$('#errors').html("");
+	 			$("#errors").append( '<H3 align="center"> Error(s)!! <H3>');                
+	  			    $("#result").append( '<p>');
+	  	
 	  			    var errorList = errorObject.responseJSON.errors;
 	 	 	        $.each(errorList,  function(i,error) {			   
-	 		    		$("#result").append( error.message + '<br>');
+	 		    		$("#errors").append( error.message + '<br>');
 			    	});
-	 	 	        $("#result").append( '</p>');
+	 	 	        $("#errors").append( '</p>');
 	 	 	        $('#result').show();
 			}
 			else {
@@ -27,33 +38,63 @@ function postSubmit(id){
 			}
  		}
 	});
-}  	 
-function categoryRemove(id){
-	
-	var dataToSend = JSON.stringify(id);
+}
+function postDelete(id){
+   	var dataToSend = createObject();
+   //	console.log(dataToSend);
    	 $.ajax({
-		type:'DELETE',
-		url:'/deals/admin/deleteCategory?'+csrf,
-		dataType: "json",           // Accept header
+		type: 'DELETE',
+		url: 'user'+id,
+		dataType: false,           // Accept header
  		data:dataToSend,
- 		contentType: 'application/json',   // Sends - Content-type
-		success: function(){
-			location.reload(true);
+ 		contentType: false,   // Sends - Content-type
+		success: function(data){
+			
+			$('#errors').html("");
+ 			$("#result").append( '<H3 align="center"> OKAY!! <H3>');                
+	 	    $('#result').show();
 		},
  
-		error: function(errorObject ){
+		error: function(errorObject ){	
+//			error: function(jqXHR,  textStatus,  HTTPStatus ){	
+// jqXHR = jQuery XMLHttpRequest superset of  XMLHttpRequest
+//	EXAMPLE values:		error: function(jQuery XMLHttpRequest,  "error",  "Bad Request" ){	
+// 	see http://api.jquery.com/jquery.ajax/
+			console.log(errorObject);
+			if (errorObject.responseJSON.errorType == "ValidationError") {
+	 			$('#success').html("");
+	 			$('#errors').html("");
+	 			$("#errors").append( '<H3 align="center"> Error(s)!! <H3>');                
+	  			    $("#result").append( '<p>');
+	  	
+	  			    var errorList = errorObject.responseJSON.errors;
+	 	 	        $.each(errorList,  function(i,error) {			   
+	 		    		$("#errors").append( error.message + '<br>');
+			    	});
+	 	 	        $("#errors").append( '</p>');
+	 	 	        $('#result').show();
+			}
+			else {
+				alert(errorObject.responseJSON.errors(0));   // "non" Validation Error
+			}
  		}
 	});
 }
 
 
-
-function serializeObject (form){
-    var jsonObject = {};
-    var array = form.serializeArray();
-    $.each(array, function() {
-         	jsonObject[this.name] = this.value;
-    });
+// Translate form to array
+// Then put in JSON format
+ function createObject (){
+	 
+	 var title = document.getElementById('title').value;
+	 //var file = document.getElementById('file').value; 
+	 console.log(file); 
+    var jsonObject = {
+    		"title": title,
+    		"date": null,
+    		"user": null
+    };
+    
     return jsonObject;
 
 };

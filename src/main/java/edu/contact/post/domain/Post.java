@@ -5,8 +5,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,20 +19,22 @@ public class Post {
 	private Long id;
 	private String title;
 	@ManyToOne
-	User creator;
+	@JoinTable(name="User_Post")
+	private User user;
 	@Temporal(TemporalType.DATE)
 	private Date date;
+
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public User getCreator() {
-		return creator;
-	}
-	public void setCreator(User creator) {
-		this.creator = creator;
 	}
 	public Date getDate() {
 		return date;
@@ -46,10 +48,5 @@ public class Post {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public User getUser() {
-		return creator;
-	}
-	public void setUser(User user) {
-		this.creator = user;
-	}
+	
 }

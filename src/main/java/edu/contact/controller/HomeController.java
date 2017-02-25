@@ -13,18 +13,17 @@ public class HomeController {
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String homePage(){
-		return "index";
+		return "file";
+		//return "index";
 	}
 	@RequestMapping(value="/addUser", method=RequestMethod.GET)
 	public String addUser(){
 		return "userForm";
 	}
-	
-	@RequestMapping(value="/book", method=RequestMethod.GET)
-	public String addForm(){
-		return "BookList";
+	@RequestMapping(value="/dash", method=RequestMethod.GET)
+	public String dash(){
+		return "index";
 	}
-	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(
 		@RequestParam(value = "error", required = false) String error,
