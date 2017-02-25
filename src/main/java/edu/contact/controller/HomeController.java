@@ -19,6 +19,7 @@ public class HomeController {
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String homePage(){
 		return "file";
+		//return "index";
 	}
 	@RequestMapping(value="/addUser", method=RequestMethod.GET)
 	public String addUser(){

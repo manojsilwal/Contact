@@ -16,20 +16,20 @@ import javax.validation.Valid;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.contact.post.domain.Post;
+
 @Entity
 public class User implements Serializable {
     private static final long serialVersionUID = 5658716793957904104L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	
 	@OneToOne(cascade = CascadeType.ALL)
 	@Valid
 	private UserProfile profile;
-	
 	Role role=Role.USER;
 	
-	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user")
 	List<Post> posts;
 	
 	@Transient

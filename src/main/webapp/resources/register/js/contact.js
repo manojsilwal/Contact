@@ -1,8 +1,3 @@
-	// pathname is contextRoot/path/path/ so we want to get [1] 
-    // that is where contextRoot is
-	// [0] has "" as a result of split 
-	var contextRoot = "/" + window.location.pathname.split( '/' )[1];
-
 function userFormSubmit(){
    	var dataToSend = createObject();
    //	console.log(dataToSend);
@@ -42,9 +37,7 @@ function userFormSubmit(){
 			else {
 				alert(errorObject.responseJSON.errors(0));   // "non" Validation Error
 			}
-			}
-			
- 		
+ 		}
 	});
 }
 
@@ -64,6 +57,7 @@ function collectFormData(fields) {
     }
     return formData;
 }
+
 
 // Translate form to array
 // Then put in JSON format

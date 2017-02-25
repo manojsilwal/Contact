@@ -34,6 +34,7 @@ public class UserController {
 	@Autowired
 	ServletContext servletContext;
 
+
 	@RequestMapping(value="/users",method=RequestMethod.GET,headers = "Accept=application/json")
 	public @ResponseBody List<User> getUsers(){
 		try {
@@ -61,7 +62,19 @@ public class UserController {
 		}
 	}
 
-	
+	@RequestMapping(value="/user",method=RequestMethod.POST,headers = "Accept=application/json")
+	public void add(@RequestBody User user){
+		try {
+
+			System.out.println("inside user POST");
+			userService.save(user);
+			
+		} catch (Exception e) {
+			System.err.println("Error in lising users: " + e.getMessage());
+
+		}
+	}
+
 	
 	@RequestMapping(value="/user",method=RequestMethod.PUT,headers = "Accept=application/json")
 	public void put(@RequestBody User user){

@@ -45,7 +45,7 @@
 
 		<property name="packagesToScan" value="edu.contact.user.domain"/>
 	</bean>	
-	
+
 	<context:component-scan base-package="edu.contact" />
 	<!-- JTA bean creation 	 -->
 	<tx:annotation-driven transaction-manager="txManager" />
