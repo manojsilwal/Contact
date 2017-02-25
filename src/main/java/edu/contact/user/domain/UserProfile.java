@@ -17,8 +17,9 @@ public class UserProfile implements Serializable {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
-	private String email;
 	@NotEmpty
+	private String email;
+	
 	private String firstName;
 	private String lastName;
 	private Gender  gender;

@@ -1,12 +1,12 @@
 function userFormSubmit(){
-   	var dataToSend = createObject();
-   //	console.log(dataToSend);
+   	var dataToSend = JSON.stringify(createObject());
+   	console.log(dataToSend);
    	 $.ajax({
 		type: 'POST',
 		url: 'user',
-		dataType: false,           // Accept header
+		dataType: "json",           // Accept header
  		data:dataToSend,
- 		contentType: false,   // Sends - Content-type
+ 		contentType: 'application/json',   // Sends - Content-type
 		success: function(data){
 			
 			$('#errors').html("");
@@ -44,7 +44,6 @@ function userFormSubmit(){
 // Translate form to array
 // Then put in JSON format
  function createObject (){
-	 
 	 var firstName = document.getElementById('firstName').value;
 	 var lastName = document.getElementById('lastName').value;
 	 var email = document.getElementById('email').value;
@@ -57,7 +56,7 @@ function userFormSubmit(){
 	 var phone = document.getElementById('phone').value;
 	 //var file = document.getElementById('file').value;
 	 
-	 console.log(file);
+	// console.log(file);
 	 
     var jsonObject = {
     		"profile" : {
@@ -73,12 +72,11 @@ function userFormSubmit(){
 					"zipCode":zipCode
 				},
 				"dob":null,
-				"phone":phone
+				"phone":phone,
+				"location":null
     		},
-    		"image":null,
-    		"post" : null
+    		"posts" : null
     };
-    
     return jsonObject;
 
 };
