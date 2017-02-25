@@ -14,13 +14,12 @@
 <!--  Form 1 -->
 <!--  Form 2 -->
 <i>Uploading File With Ajax</i><br/>
-<form id="form2" method="post" action="/Contact/saveFile" enctype="multipart/form-data">
+<form id="form2" method="post">
   <!-- File input -->    
-  <input name="file2" id="file2" type="file" /><br/>
+  <input name="file2" id="file" type="file" /><br/>
 </form>
  
-<button value="Submit" onclick="uploadJqueryForm()" >Upload</button><i>Using JQuery Form Plugin</i><br/>
-<button value="Submit" onclick="uploadFormData()" >Upload</button><i>Using FormData Object</i>
+<button value="Submit" id="btnUpload" >Upload</button><i>Using FormData Object</i>
  
 <div id="result"></div>
 </body>

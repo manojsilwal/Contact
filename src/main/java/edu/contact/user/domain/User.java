@@ -22,7 +22,7 @@ import edu.contact.post.domain.Post;
 public class User implements Serializable {
     private static final long serialVersionUID = 5658716793957904104L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue
 	private Long id;
 	@OneToOne(cascade = CascadeType.ALL)
 	@Valid
@@ -30,11 +30,9 @@ public class User implements Serializable {
 	Role role=Role.USER;
 	
 	@OneToMany(mappedBy = "user")
-	@Column(name="post")
 	List<Post> posts;
 	
-	@Transient
-	private MultipartFile image;
+	private String imageUrl;
 	
 	
 	public Long getId() {
@@ -43,11 +41,14 @@ public class User implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public MultipartFile getImage() {
-		return image;
+	
+	
+	
+	public String getImageUrl() {
+		return imageUrl;
 	}
-	public void setImage(MultipartFile image) {
-		this.image = image;
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 	public List<Post> getPosts() {
 		return posts;

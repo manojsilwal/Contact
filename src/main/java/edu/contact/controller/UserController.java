@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -34,6 +35,8 @@ public class UserController {
 	@Autowired
 	ServletContext servletContext;
 
+	 String rootDirectory = "C:/Users/manoj/Desktop/winter_break_project/Contact/src/main/webapp/resources/images/";
+	 String imageUrl;
 
 	@RequestMapping(value="/users",method=RequestMethod.GET,headers = "Accept=application/json")
 	public @ResponseBody List<User> getUsers(){
@@ -62,19 +65,6 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping(value="/user",method=RequestMethod.POST,headers = "Accept=application/json")
-	public void add(@RequestBody User user){
-		try {
-
-			System.out.println("inside user POST");
-			userService.save(user);
-			
-		} catch (Exception e) {
-			System.err.println("Error in lising users: " + e.getMessage());
-
-		}
-	}
-
 	
 	@RequestMapping(value="/user",method=RequestMethod.PUT,headers = "Accept=application/json")
 	public void put(@RequestBody User user){
@@ -98,8 +88,9 @@ public class UserController {
 	}
 
 	
-	@RequestMapping(value="/user",method=RequestMethod.POST)
+	@RequestMapping(value="/user",method=RequestMethod.POST,headers = "Accept=application/json")
 	public @ResponseBody User add(@Valid @RequestBody User user,Model model){
+		user.setImageUrl(imageUrl);
 		userService.save(user);
 		model.addAttribute("user", user);
 		return user;
@@ -114,20 +105,18 @@ public class UserController {
 	
 	
 	 @RequestMapping(value = "/saveFile", method = RequestMethod.POST)
-	    public void echoFile(@RequestBody MultipartHttpServletRequest request,
-	            HttpServletResponse response, BindingResult result) throws Exception {
+	    public void echoFile(@RequestParam("file") MultipartFile multipartFile,Model model) throws Exception {
 	    
-	        MultipartFile imageFile = request.getFile("file");
-	        String rootDirectory = servletContext.getRealPath("/");
+	        MultipartFile imageFile = multipartFile;
+	       
 			String fileName = imageFile.getOriginalFilename();
 			String extension = null;
-			if (fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0)
-				extension = fileName.substring(fileName.lastIndexOf(".") + 1);
 			if (imageFile != null && !imageFile.isEmpty()) {
 				try {
 					imageFile.transferTo(
-							new File(rootDirectory + "/resources/images/test" + "." + extension));
-					System.out.println("filesaved"+imageFile.getName());
+							new File(rootDirectory+fileName));
+					imageUrl = fileName;
+					System.out.println("filesaved"+fileName);
 				} catch (Exception e) {
 					throw new RuntimeException("Image saving faile", e);
 

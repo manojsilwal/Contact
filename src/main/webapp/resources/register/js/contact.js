@@ -1,13 +1,12 @@
 function userFormSubmit(){
-   	var dataToSend = createObject();
-   //	console.log(dataToSend);
+   	var dataToSend = JSON.stringify(createObject());
+   	console.log(dataToSend);
    	 $.ajax({
 		type: 'POST',
-		url: contextRoot + '/user',
-		dataType: false,           // Accept header
+		url: 'user',
+		dataType: "json",           // Accept header
  		data:dataToSend,
- 		enctype: 'multipart/form-data',
- 		contentType: false,   // Sends - Content-type
+ 		contentType: 'application/json',   // Sends - Content-type
 		success: function(data){
 			
 			$('#errors').html("");
@@ -41,41 +40,17 @@ function userFormSubmit(){
 	});
 }
 
-function collectFormData(fields) {
-    var formData = new FormData();
-
-    for (var i = 0; i < fields.length; i++) {
-        var $item = $(fields[i]);
-
-        if ($item.attr('type') =="file"){
-            var file = $('input[type=file]')[0].files[0];
-            formData.append( $item.attr('name') , file);
-
-        } else {
-            formData.append( $item.attr('name') , $item.val());
-        }
-    }
-    return formData;
-}
-
 
 // Translate form to array
 // Then put in JSON format
  function createObject (){
-	 var data = new FormData();
-	 $.each($('#file')[0].files, function(i, file) {
-	     data.append('file-'+i, file);
-	     console.log(file);
-	 });
-	 console.log(data);
-	 
-	/* var firstName = document.getElementById('firstName').value;
+	 var firstName = document.getElementById('firstName').value;
 	 var lastName = document.getElementById('lastName').value;
 	 var email = document.getElementById('email').value;
 	 var phone = document.getElementById('phone').value;
-	 var file = document.getElementById('file').value;
+	 //var file = document.getElementById('file').value;
 	 
-	 console.log(file);
+	// console.log(file);
 	 
     var jsonObject = {
     		"profile" : {
@@ -84,13 +59,13 @@ function collectFormData(fields) {
 				"lastName":lastName,
 				"gender":null,
 				"dob":null,
-				"phone":phone
+				"phone":phone,
+				"location":null
     		},
-    		"image":file,
-    		"post" : null
+    		"posts":null
     };
-    */
-    return data;
+    
+    return jsonObject;
 
 };
 

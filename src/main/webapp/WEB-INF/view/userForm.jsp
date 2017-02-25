@@ -5,19 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
 <script type="text/javascript" src="resources/register/js/contact.js"></script>
 <script type="text/javascript" src="resources/register/js/fileUpload.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <body>
-	<form name="form" id="userFrom" enctype="multipart/form-data">
+	<form name="form" id="userFrom">
 	
 		<input type="text" id="firstName" name="firstName" placeholder="firstName" />
 		<input type="text" name="lastName" placeholder="lastName" id="lastName"/>
 		<input type="email" name="email" placeholder="email" id="email"/>
 		<input type="number" name="phone" placeholder="phone" id="phone"/>
 		<input type="file" name="image" id="file" onchange="fileUpload();"/>
-		
 		<input type="button" value="submit" onclick="userFormSubmit();"/>
 	</form>
 	
