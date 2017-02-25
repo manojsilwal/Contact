@@ -182,13 +182,13 @@
       <div class="modal-body">
           <form class="form center-block">
             <div class="form-group">
-              <textarea class="form-control input-lg" autofocus="" placeholder="What do you want to share?"></textarea>
+              <textarea id="title" class="form-control input-lg" autofocus="" placeholder="What do you want to share?"></textarea>
             </div>
           </form>
       </div>
       <div class="modal-footer">
           <div>
-          <button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">Post</button>
+          <button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true" onClick="postSubmit()">Post</button>
             <ul class="pull-left list-inline"><li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li><li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li><li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li></ul>
 		  </div>	
       </div>

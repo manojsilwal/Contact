@@ -48,6 +48,12 @@ function userFormSubmit(){
 	 var firstName = document.getElementById('firstName').value;
 	 var lastName = document.getElementById('lastName').value;
 	 var email = document.getElementById('email').value;
+	 var gender =  $("input[type='radio'][name='gender']:checked").val;
+	 var street = document.getElementById('street').value;
+	 var city = document.getElementById('city').value;
+	 var city = document.getElementById('state').value;
+	 var city = document.getElementById('country').value;
+	 var city = document.getElementById('zipCode').value;
 	 var phone = document.getElementById('phone').value;
 	 //var file = document.getElementById('file').value;
 	 
@@ -58,14 +64,20 @@ function userFormSubmit(){
 				"email":email,
 				"firstName":firstName,
 				"lastName":lastName,
-				"gender":null,
+				"gender":gender,
+				"location":{
+					"street":street,
+					"city":city,
+					"state": state,
+					"country": country,
+					"zipCode":zipCode
+				},
 				"dob":null,
 				"phone":phone,
 				"location":null
     		},
-    		"posts":null
+    		"posts" : null
     };
-    
     return jsonObject;
 
 };

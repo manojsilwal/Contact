@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
@@ -68,8 +69,7 @@ public class User implements Serializable {
 	}
 	public void setRole(Role role) {
 		this.role = role;
-	}
-	
+	}	
 	@Override
 	public String toString() {
 		return "User [profile=" + profile + ", role=" + role + ", posts=" + posts + "]";

@@ -25,6 +25,7 @@ public class PostDAO {
 	public Post getById(Long id){
 		return (Post)sessionFactory.getCurrentSession().get(Post.class, id);
 	}
+	@Transactional
 	public List<Post> getAll(User user){
 		Query query = (Query) sessionFactory.getCurrentSession().createQuery("select distinct post From Post where receiver=creator");
 		List<Post> post = ((org.hibernate.Query) query).list();
