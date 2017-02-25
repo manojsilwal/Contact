@@ -7,18 +7,16 @@
 		<title>Bootstrap Google Plus Theme</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<style type="text/css">@import url("<spring:url value="resources/general/css/styles.css"/>");</style>
-		<link href="css/styles.css" rel="stylesheet">
 	</head>
 	<body>
 <nav class="navbar navbar-fixed-top header">
  	<div class="col-md-12">
         <div class="navbar-header">
-          
           <a href="#" class="navbar-brand">Bootstrap</a>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
           <i class="glyphicon glyphicon-search"></i>
@@ -35,7 +33,17 @@
               </div>
           </form>
           <ul class="nav navbar-nav navbar-right">
-             <li><a href="http://www.bootply.com" target="_ext">Bootply+</a></li>
+          	<li>
+             <a href="#" style="margin-left:15px;" class="navbar-btn btn btn-default btn-plus dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-home" style="color:#dd1111;"></i> Home <small><i class="glyphicon glyphicon-chevron-down"></i></small></a>
+	          <ul class="nav dropdown-menu">
+	              <li><a href="#"><i class="glyphicon glyphicon-user" style="color:#1111dd;"></i> Profile</a></li>
+	              <li><a href="#"><i class="glyphicon glyphicon-dashboard" style="color:#0000aa;"></i> Dashboard</a></li>
+	              <li><a href="#"><i class="glyphicon glyphicon-inbox" style="color:#11dd11;"></i> Pages</a></li>
+	              <li class="nav-divider"></li>
+	              <li><a href="#"><i class="glyphicon glyphicon-cog" style="color:#dd1111;"></i> Settings</a></li>
+	              <li><a href="#"><i class="glyphicon glyphicon-plus"></i> More..</a></li>
+	          </ul>
+	         </li>
              <li>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bell"></i></a>
                 <ul class="dropdown-menu">
@@ -46,49 +54,18 @@
                   <li><a href="#"><span class="badge pull-right">13</span>Link</a></li>
                 </ul>
              </li>
-             <li><a href="#" id="btnToggle"><i class="glyphicon glyphicon-th-large"></i></a></li>
+             
              <li><a href="#"><i class="glyphicon glyphicon-user"></i></a></li>
+             <li><a href="#loginModal" role="button" data-toggle="modal">Log Out</a></li>
            </ul>
         </div>	
      </div>	
 </nav>
-<div class="navbar navbar-default" id="subnav">
-    <div class="col-md-12">
-        <div class="navbar-header">
-          
-          <a href="#" style="margin-left:15px;" class="navbar-btn btn btn-default btn-plus dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-home" style="color:#dd1111;"></i> Home <small><i class="glyphicon glyphicon-chevron-down"></i></small></a>
-          <ul class="nav dropdown-menu">
-              <li><a href="#"><i class="glyphicon glyphicon-user" style="color:#1111dd;"></i> Profile</a></li>
-              <li><a href="#"><i class="glyphicon glyphicon-dashboard" style="color:#0000aa;"></i> Dashboard</a></li>
-              <li><a href="#"><i class="glyphicon glyphicon-inbox" style="color:#11dd11;"></i> Pages</a></li>
-              <li class="nav-divider"></li>
-              <li><a href="#"><i class="glyphicon glyphicon-cog" style="color:#dd1111;"></i> Settings</a></li>
-              <li><a href="#"><i class="glyphicon glyphicon-plus"></i> More..</a></li>
-          </ul>
-          
-          
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse2">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          </button>
-      
-        </div>
-        <div class="collapse navbar-collapse" id="navbar-collapse2">
-          <ul class="nav navbar-nav navbar-right">
-             <li class="active"><a href="#">Posts</a></li>
-             <li><a href="#loginModal" role="button" data-toggle="modal">Login</a></li>
-             <li><a href="#aboutModal" role="button" data-toggle="modal">About</a></li>
-           </ul>
-        </div>	
-     </div>	
-</div>
 
 <!--main-->
-<div class="container" id="main">
+<div class="container-fluid" id="main">
    <div class="row">
-   <div class="col-md-4 col-sm-6">
+   <div class="col-md-2 col-sm-4">
         <div class="panel panel-default">
           <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Bootstrap Examples</h4></div>
    			<div class="panel-body">
@@ -99,7 +76,12 @@
               </div>
             </div>
    		</div>
-        <div class="well"> 
+       
+
+	</div>
+  	<div class="col-md-7 col-sm-8">
+      	 
+           <div class="well"> 
              <form class="form-horizontal" role="form">
               <h4>What's New</h4>
                <div class="form-group" style="padding:14px;">
@@ -108,30 +90,6 @@
               <button class="btn btn-success pull-right" type="button">Post</button><ul class="list-inline"><li><a href="#"><i class="glyphicon glyphicon-align-left"></i></a></li><li><a href="#"><i class="glyphicon glyphicon-align-center"></i></a></li><li><a href="#"><i class="glyphicon glyphicon-align-right"></i></a></li></ul>
             </form>
         </div>
-     
-        <div class="panel panel-default">
-           <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>More Templates</h4></div>
-   			<div class="panel-body">
-              <img src="//placehold.it/150x150" class="img-circle pull-right"> <a href="#">Free @Bootply</a>
-              <div class="clearfix"></div>
-              There a load of new free Bootstrap 3 ready templates at Bootply. All of these templates are free and don't require extensive customization to the Bootstrap baseline.
-              <hr>
-              <ul class="list-unstyled"><li><a href="http://www.bootply.com/templates">Dashboard</a></li><li><a href="http://www.bootply.com/templates">Darkside</a></li><li><a href="http://www.bootply.com/templates">Greenfield</a></li></ul>
-            </div>
-         </div> 
-
-	</div>
-  	<div class="col-md-4 col-sm-6">
-      	 
-          <div class="well"> 
-             <form class="form">
-              <h4>Sign-up</h4>
-              <div class="input-group text-center">
-              <input type="text" class="form-control input-lg" placeholder="Enter your email address">
-                <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">OK</button></span>
-              </div>
-            </form>
-          </div>
 
       	 <div class="panel panel-default">
            <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Bootply Editor &amp; Code Library</h4></div>
@@ -155,7 +113,7 @@
    		 </div>
       
   	</div>
-  	<div class="col-md-4 col-sm-6">
+  	<div class="col-md-3 col-sm-6">
          <div class="panel panel-default">
            <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Portlet Heading</h4></div>
    			<div class="panel-body">
