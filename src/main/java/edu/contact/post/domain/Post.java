@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -20,7 +21,7 @@ public class Post {
 	private Long id;
 	private String title;
 	@ManyToOne
-	@JoinColumn(name="userId")
+	@JoinTable(name="User_Post")
 	private User user;
 	
 	@Temporal(TemporalType.DATE)

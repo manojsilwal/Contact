@@ -43,7 +43,7 @@
 		<property name="hibernateProperties" ref="hibernateProperties" />
 		<!-- OR mapping files. -->
 
-		<property name="packagesToScan" value="edu.contact.user.domain"/>
+		<property name="packagesToScan" value="edu.contact"/>
 	</bean>	
 
 	<context:component-scan base-package="edu.contact" />
@@ -67,5 +67,7 @@
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
 		<property name="validationMessageSource" ref="messageSource" />
 	</bean>
+	
+	
 	
 </beans>
