@@ -4,14 +4,15 @@
 	var contextRoot = "/" + window.location.pathname.split( '/' )[1];
 
 function userFormSubmit(){
-   	var dataToSend = JSON.stringify(createObject());
+   	var dataToSend = createObject();
    //	console.log(dataToSend);
    	 $.ajax({
 		type: 'POST',
 		url: contextRoot + '/user',
-		dataType: "json",           // Accept header
+		dataType: false,           // Accept header
  		data:dataToSend,
- 		contentType: 'application/json',   // Sends - Content-type
+ 		enctype: 'multipart/form-data',
+ 		contentType: false,   // Sends - Content-type
 		success: function(data){
 			
 			$('#errors').html("");
@@ -47,19 +48,40 @@ function userFormSubmit(){
 	});
 }
 
- 
-  
+function collectFormData(fields) {
+    var formData = new FormData();
+
+    for (var i = 0; i < fields.length; i++) {
+        var $item = $(fields[i]);
+
+        if ($item.attr('type') =="file"){
+            var file = $('input[type=file]')[0].files[0];
+            formData.append( $item.attr('name') , file);
+
+        } else {
+            formData.append( $item.attr('name') , $item.val());
+        }
+    }
+    return formData;
+}
 
 // Translate form to array
 // Then put in JSON format
  function createObject (){
+	 var data = new FormData();
+	 $.each($('#file')[0].files, function(i, file) {
+	     data.append('file-'+i, file);
+	     console.log(file);
+	 });
+	 console.log(data);
 	 
-	 var firstName = document.getElementById('firstName').value;
+	/* var firstName = document.getElementById('firstName').value;
 	 var lastName = document.getElementById('lastName').value;
 	 var email = document.getElementById('email').value;
 	 var phone = document.getElementById('phone').value;
+	 var file = document.getElementById('file').value;
 	 
-	 console.log(firstName);
+	 console.log(file);
 	 
     var jsonObject = {
     		"profile" : {
@@ -70,10 +92,11 @@ function userFormSubmit(){
 				"dob":null,
 				"phone":phone
     		},
+    		"image":file,
     		"post" : null
     };
-    
-    return jsonObject;
+    */
+    return data;
 
 };
 

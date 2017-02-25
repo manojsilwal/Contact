@@ -10,9 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class User implements Serializable {
@@ -30,6 +32,22 @@ public class User implements Serializable {
 	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
 	List<Post> posts;
 	
+	@Transient
+	private MultipartFile image;
+	
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public MultipartFile getImage() {
+		return image;
+	}
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
 	public List<Post> getPosts() {
 		return posts;
 	}

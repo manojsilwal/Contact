@@ -1,9 +1,15 @@
 package edu.contact.controller;
 
+import java.io.File;
+import java.io.InputStream;
+import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import edu.contact.service.UserService;
 import edu.contact.user.domain.User;
@@ -22,6 +30,9 @@ public class UserController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	ServletContext servletContext;
 
 	@RequestMapping(value="/users",method=RequestMethod.GET,headers = "Accept=application/json")
 	public @ResponseBody List<User> getUsers(){
@@ -87,4 +98,27 @@ public class UserController {
 		model.addAttribute("user", user);
 		return "redirect:/details";
 	}
+	
+	
+	 @RequestMapping(value = "/saveFile", method = RequestMethod.POST)
+	    public void echoFile(@RequestBody MultipartHttpServletRequest request,
+	            HttpServletResponse response, BindingResult result) throws Exception {
+	    
+	        MultipartFile imageFile = request.getFile("file");
+	        String rootDirectory = servletContext.getRealPath("/");
+			String fileName = imageFile.getOriginalFilename();
+			String extension = null;
+			if (fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0)
+				extension = fileName.substring(fileName.lastIndexOf(".") + 1);
+			if (imageFile != null && !imageFile.isEmpty()) {
+				try {
+					imageFile.transferTo(
+							new File(rootDirectory + "/resources/images/test" + "." + extension));
+					System.out.println("filesaved"+imageFile.getName());
+				} catch (Exception e) {
+					throw new RuntimeException("Image saving faile", e);
+
+				}
+			}
+	    }
 }
