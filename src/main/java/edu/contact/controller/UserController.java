@@ -2,6 +2,7 @@ package edu.contact.controller;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import edu.contact.POJO.UserBean;
 import edu.contact.service.UserService;
 import edu.contact.user.domain.User;
 
@@ -39,11 +41,20 @@ public class UserController {
 	 String imageUrl;
 
 	@RequestMapping(value="/users",method=RequestMethod.GET,headers = "Accept=application/json")
-	public @ResponseBody List<User> getUsers(){
+	public @ResponseBody List<UserBean> getUsers(){
 		try {
+			List<User> users = userService.findAll();
+			UserBean userBean = new UserBean();
+			List<UserBean> userList = new ArrayList<>();
 
-			System.out.println("Successfully listed user list with " + userService.findAll().size() + " rows");
-			return userService.findAll();
+			System.out.println("Successfully listed user list with " + users.size() + " rows");
+			for(User user : users){
+				
+				userBean.setId(user.getId());
+				userBean.setUsername(user.getProfile().getFirstName()+user.getProfile().getLastName());
+				userList.add(userBean);
+			}
+			return userList;
 
 		} catch (Exception e) {
 			System.err.println("Error in lising users: " + e.getMessage());

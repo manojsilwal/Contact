@@ -25,6 +25,8 @@
 		<div id="errors"></div>
 		<div id="success"></div>
 	</div>
-	
+	<div id="userList">
+		<button onclick="getUsers();">getUsers</button>
+	</div>
 </body>
 </html>
