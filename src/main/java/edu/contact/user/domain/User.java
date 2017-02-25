@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
@@ -34,7 +35,7 @@ public class User implements Serializable {
 		this.id = id;
 	}
 	
-	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "creator")
 	List<Post> posts;
 	
 	public List<Post> getPosts() {
