@@ -1,3 +1,4 @@
+	var user;
 
 function userFormSubmit(){
    	var dataToSend = JSON.stringify(createObject());
@@ -78,6 +79,7 @@ function userFormSubmit(){
     		},
     		"posts" : null
     };
+    console.log(jsonObject);
     return jsonObject;
 
 };
@@ -85,35 +87,36 @@ function userFormSubmit(){
 
 function updateUser(id){
 		//get user with id
-		var user = getUser(id);
-		document.getElementById('idUpdate').value = id;
-		document.getElementById('fnameUpdate').value = user.profile.firstName;
-		document.getElementById('lnameUpdate').value = user.profile.lastName;
-		document.getElementById('emailUpdate').value = user.profile.email;
-		document.getElementById('addressUpdate').value = user.profile.location.address;
-		document.getElementById('cityUpdate').value = user.profile.location.city;
-		document.getElementById('stateUpdate').value = user.profile.location.state;
-		document.getElementById('countryUpdate').value = user.profile.location.country;
+		getUser(id);
+		console.log(user);
+		console.log(user.profile.firstName);
+		//document.getElementById('idUpdate').value = id;
+		document.getElementById('firstName').value = user.profile.firstName;
+		document.getElementById('lastName').value = user.profile.lastName;
+		document.getElementById('email').value = user.profile.email;
+		document.getElementById('file').value = user.imageUrl;
+		
 }
 
 
 //display users
 
 function getUser(id) {
-	
 	$.ajax({
 		url: '/Contact/user',
  		type: 'GET',
  		async:false,
 		dataType: "json",
 		data:'id=' + id,
-	 	 success: function (user) {
-	 		console.log(user);
+	 	 success: function (data) {
+	 		console.log(data);
+	 		user  = data;
 	 		
 	 	 },
 			error: function(data){
 		 	 } 
    });
+	
 }
 
 function getUsers() {

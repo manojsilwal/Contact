@@ -16,10 +16,7 @@ public class HomeController {
 		return "file";
 		//return "index";
 	}
-	@RequestMapping(value="/addUser", method=RequestMethod.GET)
-	public String addUser(){
-		return "userForm";
-	}
+	
 	@RequestMapping(value="/dash", method=RequestMethod.GET)
 	public String dash(){
 		return "index";
