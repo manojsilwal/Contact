@@ -1,3 +1,4 @@
+
 function userFormSubmit(){
    	var dataToSend = JSON.stringify(createObject());
    	console.log(dataToSend);
@@ -68,5 +69,55 @@ function userFormSubmit(){
     return jsonObject;
 
 };
+
+
+function updateUser(id){
+		//get user with id
+		var user = getUser(id);
+		document.getElementById('idUpdate').value = id;
+		document.getElementById('fnameUpdate').value = user.profile.firstName;
+		document.getElementById('lnameUpdate').value = user.profile.lastName;
+		document.getElementById('emailUpdate').value = user.profile.email;
+		document.getElementById('addressUpdate').value = user.profile.location.address;
+		document.getElementById('cityUpdate').value = user.profile.location.city;
+		document.getElementById('stateUpdate').value = user.profile.location.state;
+		document.getElementById('countryUpdate').value = user.profile.location.country;
+}
+
+
+//display users
+
+function getUser(id) {
+	
+	$.ajax({
+		url: '/Contact/user',
+ 		type: 'GET',
+ 		async:false,
+		dataType: "json",
+		data:'id=' + id,
+	 	 success: function (user) {
+	 		console.log(user);
+	 		
+	 	 },
+			error: function(data){
+		 	 } 
+   });
+}
+
+function getUsers() {
+	
+	$.ajax({
+		url: '/Contact/users',
+ 		type: 'GET',
+ 		async:false,
+		dataType: "json",
+	 	 success: function (users) {
+	 		console.log(users);
+	 		
+	 	 },
+			error: function(data){
+		 	 } 
+   });
+}
 
 

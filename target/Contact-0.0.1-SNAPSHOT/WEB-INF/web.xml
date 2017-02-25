@@ -15,7 +15,7 @@
 			WEB-INF/dispatcher-config.xml
 			WEB-INF/spring-config.xml
 			</param-value>
-		</init-param>
+		</init-param>	
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
