@@ -125,9 +125,16 @@ function getUsers() {
 		dataType: "json",
 	 	 success: function (users) {
 	 		console.log(users);
+	 		$.each(users,  function(i,user) {		
+	 			$("#userListTable").append('<tr>');
+		    	$("#userListTable").append('<td>'+ user.id+ '</td>');
+		    	$("#userListTable").append('<td>'+ user.username+ '</td>');
+		    	$("#userListTable").append('</tr>');
+	    	});
 	 		
 	 	 },
 			error: function(data){
+				alert("nothing");
 		 	 } 
    });
 }

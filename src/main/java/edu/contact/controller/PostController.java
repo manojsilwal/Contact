@@ -24,9 +24,9 @@ public class PostController {
 		model.addAttribute("posts", postService.findAll(userService.findById(id)));
 		return "dashboard";
 	}
-	@RequestMapping(value="/post/{id}", method=RequestMethod.POST)
-	public @ResponseBody Post addPost(@RequestBody Post post, @PathVariable("id") long id){
-		
+	@RequestMapping(value="/post", method=RequestMethod.POST)
+	public @ResponseBody Post addPost(@RequestBody Post post){
+		System.out.println("dasdadsd");
 		postService.save(post);
 		return post;
 	}

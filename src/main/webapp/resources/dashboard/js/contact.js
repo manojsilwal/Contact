@@ -1,20 +1,24 @@
-function postSubmit(id){
-   	var dataToSend = createObject();
+function postSubmit(){
+	console.log("inside postsubmit");
+   	var dataToSend = JSON.stringify(createObject());
+   	console.log(dataToSend);
+   	//alert("postSub"+dataTosend);
    //	console.log(dataToSend);
    	 $.ajax({
 		type: 'POST',
-		url: 'post/'+id,
-		dataType: false,           // Accept header
+		url: 'post',
+		dataType: "json",           // Accept header
  		data:dataToSend,
- 		contentType: false,   // Sends - Content-type
+ 		contentType: 'application/json',   // Sends - Content-type
 		success: function(data){
-			
+			alert("sucess");
 			$('#errors').html("");
  			$("#result").append( '<H3 align="center"> OKAY!! <H3>');                
 	 	    $('#result').show();
 		},
  
 		error: function(errorObject ){	
+			alert("error");
 //			error: function(jqXHR,  textStatus,  HTTPStatus ){	
 // jqXHR = jQuery XMLHttpRequest superset of  XMLHttpRequest
 //	EXAMPLE values:		error: function(jQuery XMLHttpRequest,  "error",  "Bad Request" ){	
@@ -86,15 +90,16 @@ function postDelete(id){
 // Then put in JSON format
  function createObject (){
 	 
-	 var title = document.getElementById('title').value;
-	 //var file = document.getElementById('file').value; 
-	 console.log(file); 
+	 var title = document.getElementById('postTitle').value;
+	 alert("title");
+	 console.log(title);
     var jsonObject = {
     		"title": title,
     		"date": null,
-    		"user": null
+    		"user": null,
+    		"comments":null
     };
-    
+    //alert(jsonObject+"create");
     return jsonObject;
 
 };

@@ -1,12 +1,14 @@
 package edu.contact.post.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -21,9 +23,18 @@ public class Post {
 	@ManyToOne
 	@JoinTable(name="User_Post")
 	private User user;
+	@OneToMany
+	private List<Comment> comments;
+	
 	@Temporal(TemporalType.DATE)
 	private Date date;
 
+	public List<Comment> getComments() {
+		return comments;
+	}
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
 	public User getUser() {
 		return user;
 	}

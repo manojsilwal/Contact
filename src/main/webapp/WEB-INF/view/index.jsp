@@ -85,19 +85,19 @@
              <form class="form-horizontal" role="form">
               <h4>What's New</h4>
                <div class="form-group" style="padding:14px;">
-                <textarea class="form-control" placeholder="Update your status"></textarea>
+                <textarea id="postTitle" name="title" class="form-control" placeholder="Update your status"></textarea>
               </div>
-              <button class="btn btn-success pull-right" type="button">Post</button><ul class="list-inline"><li><a href="#"><i class="glyphicon glyphicon-align-left"></i></a></li><li><a href="#"><i class="glyphicon glyphicon-align-center"></i></a></li><li><a href="#"><i class="glyphicon glyphicon-align-right"></i></a></li></ul>
+              <button class="btn btn-success pull-right" type="button" onCLick="postSubmit()">Post</button><ul class="list-inline"><li><a href="#"><i class="glyphicon glyphicon-align-left"></i></a></li><li><a href="#"><i class="glyphicon glyphicon-align-center"></i></a></li><li><a href="#"><i class="glyphicon glyphicon-align-right"></i></a></li></ul>
             </form>
         </div>
 
       	 <div class="panel panel-default">
-           <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Bootply Editor &amp; Code Library</h4></div>
+           <div class="panel-heading"><a href="#" class="pull-right">View all</a><img src="//placehold.it/150x150" class="img-circle pull-right"> <h4>Bootply Editor &amp; Code Library</h4></div>
    			<div class="panel-body">
-              <p><img src="//placehold.it/150x150" class="img-circle pull-right"> <a href="#">The Bootstrap Playground</a></p>
               <div class="clearfix"></div>
               <hr>
               Design, build, test, and prototype using Bootstrap in real-time from your Web browser. Bootply combines the power of hand-coded HTML, CSS and JavaScript with the benefits of responsive design using Bootstrap. Find and showcase Bootstrap-ready snippets in the 100% free Bootply.com code repository.
+              <img src="//placehold.it/150x150" id="postImg" class="img-circle pull-right" style="display:none">
             </div>
          </div>
       
@@ -452,7 +452,7 @@
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="<spring:url value="/resources/general/js/scripts.js"/>"></script>
+		<script type="text/javascript" src="<spring:url value="/resources/dashboard/js/contact.js"/>"></script>
 		
 	</body>
 </html>

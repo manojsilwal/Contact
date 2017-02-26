@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.contact.post.domain.Comment;
 import edu.contact.post.domain.Post;
 import edu.contact.service.PostService;
+import edu.contact.user.domain.User;
 
 @Repository
 public class CommentDAO {
@@ -33,5 +34,12 @@ public class CommentDAO {
 	public Comment getById(Long id){
 		return (Comment)sessionFactory.getCurrentSession().get(Comment.class, id);
 	}
-	
+	@Transactional
+	public List<Comment> getAll(Post post){
+		Query query = (Query) sessionFactory.getCurrentSession().createQuery("select distinct comment From Comment where ");
+		List<Comment> comments = ((org.hibernate.Query) query).list();
+		System.out.println("========="+post);
+		
+		return comments;
+	}
 }
