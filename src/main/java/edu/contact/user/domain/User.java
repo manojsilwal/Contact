@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,7 +31,7 @@ public class User implements Serializable {
 	private UserProfile profile;
 	Role role=Role.USER;
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user",fetch=FetchType.EAGER)
 	List<Post> posts;
 	
 	private String imageUrl;
@@ -59,7 +60,9 @@ public class User implements Serializable {
 	}
 	
 	public UserProfile getProfile() {
+		
 		return profile;
+		
 	}
 	public void setProfile(UserProfile profile) {
 		this.profile = profile;

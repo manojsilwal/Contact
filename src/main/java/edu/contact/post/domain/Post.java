@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
@@ -20,10 +21,17 @@ public class Post {
 	@GeneratedValue
 	private Long id;
 	private String title;
-	@ManyToOne
+	private String imageUrl;
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinTable(name="User_Post")
 	private User user;
-	@OneToMany
+	@OneToMany(fetch=FetchType.EAGER)
 	private List<Comment> comments;
 	
 	@Temporal(TemporalType.DATE)

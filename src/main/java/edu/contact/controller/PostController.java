@@ -1,5 +1,7 @@
 package edu.contact.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,14 +21,16 @@ public class PostController {
 	PostService postService;
 	@Autowired
 	UserService userService;
-	@RequestMapping(value="/posts/{id}", method=RequestMethod.GET)
-	public String getPost(@PathVariable("id") long id, Model model){
-		model.addAttribute("posts", postService.findAll(userService.findById(id)));
-		return "dashboard";
+	@RequestMapping(value="/posts", method=RequestMethod.GET)
+	public @ResponseBody List<Post> getPosts( Model model){
+		model.addAttribute("posts", postService.findAll());
+		System.out.println("inside GetPost");
+		return postService.findAll();
 	}
 	@RequestMapping(value="/post", method=RequestMethod.POST)
 	public @ResponseBody Post addPost(@RequestBody Post post){
 		System.out.println("dasdadsd");
+		post.setImageUrl(UserController.imageUrl);
 		postService.save(post);
 		return post;
 	}

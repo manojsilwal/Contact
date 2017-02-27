@@ -26,9 +26,9 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<Post> findAll(User user) {
+	public List<Post> findAll() {
 		// TODO Auto-generated method stub
-		return postDao.getAll(user);
+		return postDao.getAll();
 	}
 
 	@Override

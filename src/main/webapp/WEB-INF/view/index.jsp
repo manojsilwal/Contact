@@ -13,7 +13,7 @@
 		<![endif]-->
 		<style type="text/css">@import url("<spring:url value="resources/general/css/styles.css"/>");</style>
 	</head>
-	<body>
+	<body onload="postList()">
 <nav class="navbar navbar-fixed-top header">
  	<div class="col-md-12">
         <div class="navbar-header">
@@ -63,7 +63,7 @@
 </nav>
 
 <!--main-->
-<div class="container-fluid" id="main">
+<div class="container-fluid" id="main" >
    <div class="row">
    <div class="col-md-2 col-sm-4">
         <div class="panel panel-default">
@@ -87,31 +87,17 @@
                <div class="form-group" style="padding:14px;">
                 <textarea id="postTitle" name="title" class="form-control" placeholder="Update your status"></textarea>
               </div>
+              <div class="form-group" style="padding:14px;">
+               <input type="file" name="image" id="file" onchange="fileUpload();"/>
+              </div>
               <button class="btn btn-success pull-right" type="button" onCLick="postSubmit()">Post</button><ul class="list-inline"><li><a href="#"><i class="glyphicon glyphicon-align-left"></i></a></li><li><a href="#"><i class="glyphicon glyphicon-align-center"></i></a></li><li><a href="#"><i class="glyphicon glyphicon-align-right"></i></a></li></ul>
             </form>
         </div>
-
-      	 <div class="panel panel-default">
-           <div class="panel-heading"><a href="#" class="pull-right">View all</a><img src="//placehold.it/150x150" class="img-circle pull-right"> <h4>Bootply Editor &amp; Code Library</h4></div>
-   			<div class="panel-body">
-              <div class="clearfix"></div>
-              <hr>
-              Design, build, test, and prototype using Bootstrap in real-time from your Web browser. Bootply combines the power of hand-coded HTML, CSS and JavaScript with the benefits of responsive design using Bootstrap. Find and showcase Bootstrap-ready snippets in the 100% free Bootply.com code repository.
-              <img src="//placehold.it/150x150" id="postImg" class="img-circle pull-right" style="display:none">
-            </div>
-         </div>
+		<div id="postCollection">
+		
+		</div>
       
-      	 <div class="panel panel-default">
-           <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Portlet Heading</h4></div>
-   			<div class="panel-body">
-              <ul class="list-group">
-              <li class="list-group-item">Modals</li>
-              <li class="list-group-item">Sliders / Carousel</li>
-              <li class="list-group-item">Thumbnails</li>
-              </ul>
-            </div>
-   		 </div>
-      
+      	
   	</div>
   	<div class="col-md-3 col-sm-6">
          <div class="panel panel-default">
@@ -309,7 +295,6 @@
               <div class="col-md-4">
                 <span class="label label-default">Label</span>
                 <span class="label label-success">Success</span>
-                
               </div>
               <div class="col-md-4">
               	<span class="label label-warning">Warning</span>  
@@ -453,6 +438,6 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="<spring:url value="/resources/dashboard/js/contact.js"/>"></script>
-		
+		<script type="text/javascript" src="/Contact/resources/register/js/fileUpload.js"></script>
 	</body>
 </html>

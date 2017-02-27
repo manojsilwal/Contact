@@ -37,8 +37,8 @@ public class UserController {
 	@Autowired
 	ServletContext servletContext;
 
-	 String rootDirectory = "C:/Users/manoj/Desktop/winter_break_project/Contact/src/main/webapp/resources/images/";
-	 String imageUrl;
+	 String rootDirectory = "C:/Users/Xitiz/Desktop/Project/Contact/src/main/webapp/resources/images/";
+	 public static String imageUrl;
 
 	@RequestMapping(value="/users",method=RequestMethod.GET,headers = "Accept=application/json")
 	public @ResponseBody List<UserBean> getUsers(){
@@ -63,10 +63,10 @@ public class UserController {
 		}
 	}
 	
-	@RequestMapping(value="user/{id}",method=RequestMethod.GET,headers = "Accept=application/json")
-	public @ResponseBody User getUser(@PathVariable long id){
+	@RequestMapping(value="user",method=RequestMethod.GET,headers = "Accept=application/json")
+	public @ResponseBody User getUser(@RequestParam("id") long id){
 		try {
-			
+			System.out.println(userService.findById(id));
 			return userService.findById(id);
 
 		} catch (Exception e) {
@@ -107,13 +107,6 @@ public class UserController {
 		return user;
 	}
 	
-	@RequestMapping(value="/addUser", method=RequestMethod.POST)
-	public String addUser(@RequestBody User user,Model model){
-		userService.save(user);
-		model.addAttribute("user", user);
-		return "redirect:/details";
-	}
-	
 	
 	 @RequestMapping(value = "/saveFile", method = RequestMethod.POST)
 	    public void echoFile(@RequestParam("file") MultipartFile multipartFile,Model model) throws Exception {
@@ -134,4 +127,17 @@ public class UserController {
 				}
 			}
 	    }
+	 
+	 @RequestMapping(value="/addUser", method=RequestMethod.GET)
+		public String addUser(){
+			return "user/form";
+		}
+	 @RequestMapping(value="/updateUser/{id}",method=RequestMethod.GET)
+	 public String addUserFrom(@PathVariable long id, Model model){
+		 model.addAttribute("id",id);
+		 return "updateUser";
+	 }
+	 
+	 
+	 
 }

@@ -20,6 +20,7 @@
 		<property name="url" value="jdbc:mysql://localhost/contact?createDatabaseIfNotExist=true" />
 		<property name="username" value="root" />
 		<property name="password" value="root" />
+		
 	</bean>
 
 	<!-- hibernate Properties -->
@@ -27,13 +28,14 @@
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 		<property name="properties">
 			<props>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect
 				</prop>
 				<prop key="connection.pool_size">1</prop>
 				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
+		
 	</bean>
 	
 	<!-- Hibernate SessionFactory -->
@@ -44,6 +46,7 @@
 		<!-- OR mapping files. -->
 
 		<property name="packagesToScan" value="edu.contact"/>
+		
 	</bean>	
 
 	<context:component-scan base-package="edu.contact" />
